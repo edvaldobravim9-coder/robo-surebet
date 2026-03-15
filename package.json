@@ -1,0 +1,14 @@
+{
+  "name": "robo-surebet",
+  "version": "1.0.0",
+  "description": "Robô de surebets para casas brasileiras",
+  "main": "src/robo.js",
+  "scripts": {
+    "start": "node src/robo.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "node-fetch": "^2.7.0",
+    "ws": "^8.14.0"
+  }
+}

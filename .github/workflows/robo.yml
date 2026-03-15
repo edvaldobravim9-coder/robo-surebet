@@ -1,0 +1,25 @@
+name: Robô Surebet
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'  # Roda a cada 2 horas
+  workflow_dispatch:  # Permite rodar manualmente
+
+jobs:
+  buscar-odds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Instalar dependências
+        run: npm install
+      - name: Executar robô
+        run: node src/robo.js
+      - name: Salvar resultados
+        uses: actions/upload-artifact@v3
+        with:
+          name: odds-$(date +'%Y-%m-%d_%H-%M')
+          path: ./dados/
