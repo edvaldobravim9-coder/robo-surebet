@@ -1,5 +1,5 @@
 // ============================================
-// 1XBET - CAPTURA DE ODDS
+// 1XBET - CAPTURA DE ODDS (COOKIES ATUALIZADOS)
 // ============================================
 
 const headers = {
@@ -26,13 +26,14 @@ async function buscarOdds() {
                 id: jogo.I,
                 timeCasa: jogo.O1,
                 timeFora: jogo.O2,
+                liga: jogo.L,
                 odds: detalhes
             });
         }
         
         return odds;
     } catch (err) {
-        console.error('Erro 1xBet:', err);
+        console.error('Erro 1xBet:', err.message);
         return [];
     }
 }
