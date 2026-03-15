@@ -24,17 +24,22 @@ jobs:
           # 1xBet
           XLBET_IIDT: ${{ secrets.XLBET_IIDT }}
           XLBET_SESSION: ${{ secrets.XLBET_SESSION }}
+          
           # Betano
           BETANO_COOKIE: ${{ secrets.BETANO_COOKIE }}
+          
           # Sportingbet
           SPORTINGBET_ACCESS: ${{ secrets.SPORTINGBET_ACCESS }}
+          
           # Betfair
           BETFAIR_TOKEN: ${{ secrets.BETFAIR_TOKEN }}
           BETFAIR_COOKIE: ${{ secrets.BETFAIR_COOKIE }}
+          
           # Novibet
           NOVIBET_HEADERS: ${{ secrets.NOVIBET_HEADERS }}
           NOVIBET_COOKIE: ${{ secrets.NOVIBET_COOKIE }}
-          # Superbet (já funciona)
+          
+          # Superbet (não precisa de secrets específicos)
         run: node src/robo.js
         
       - name: 📊 PASSO 2 - Calcular Surebets
