@@ -1,5 +1,5 @@
 // ============================================
-// 1XBET - CAPTURA DE ODDS (COOKIES ATUALIZADOS)
+// 1XBET - CAPTURA DE ODDS (CORRIGIDO)
 // ============================================
 
 const headers = {
@@ -7,12 +7,11 @@ const headers = {
     'x-language': 'pt_BR',
     'x-location-latitude': '-23.7717',
     'x-location-longitude': '-46.6827',
-    'cookie': '_iidt=DxGNf8JIlyXAJJJwzy5RYO6kImVQ2QEPVWI5zu0Xb7TwHd5S+SnCm5qP32N8a7h0kGGdhU97ki+cRw==; sh.session.id=d81c3bb3-efa2-4707-b2d2-8f515ef45142'
+    'cookie': `_iidt=${process.env.XLBET_IIDT}; sh.session.id=${process.env.XLBET_SESSION}`  // ✅ Usando os Secrets
 };
 
 async function buscarOdds() {
     try {
-        // Busca lista de jogos
         const listaRes = await fetch('https://1xbet.bet.br/service/LiveFeed/Get1x2_VZip?count=50&lng=pt&partner=394', { headers });
         const lista = await listaRes.json();
         
