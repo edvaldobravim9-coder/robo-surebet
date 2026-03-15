@@ -1,0 +1,43 @@
+name: Cookie Monster - Atualizador de Cookies
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'  # Roda a cada 6 horas
+  workflow_dispatch:
+
+jobs:
+  atualizar-cookies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Instalar dependências Python
+        run: |
+          pip install playwright
+          playwright install chromium
+          
+      - name: Instalar dependências Node
+        run: npm install
+        
+      - name: 🍪 Atualizar cookies - 1xBet
+        run: python src/cookieManager.py --name 1xbet --num_browsers 3 --base_port 8010 &
+        
+      - name: 🍪 Atualizar cookies - Betano
+        run: python src/cookieManager.py --name betano --num_browsers 3 --base_port 8020 &
+        
+      - name: 🍪 Atualizar cookies - Betfair
+        run: python src/cookieManager.py --name betfair --num_browsers 3 --base_port 8030 &
+        
+      - name: 🍪 Atualizar cookies - Novibet
+        run: python src/cookieManager.py --name novibet --num_browsers 3 --base_port 8050 &
+        
+      - name: Salvar cookies atualizados
+        uses: actions/upload-artifact@v4
+        with:
+          name: cookies-atuais
+          path: ./.cookies/
