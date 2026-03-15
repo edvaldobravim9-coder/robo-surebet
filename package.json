@@ -1,14 +1,30 @@
 {
   "name": "robo-surebet",
-  "version": "1.0.0",
-  "description": "Robô de surebets para casas brasileiras",
+  "version": "2.0.0",
+  "description": "Robô de surebets com automação de cookies",
   "main": "src/robo.js",
   "scripts": {
-    "start": "node src/robo.js"
+    "start": "node src/robo.js",
+    "cookies": "python src/cookieManager.py",
+    "install-all": "npm install && pip install -r requirements.txt"
   },
   "dependencies": {
     "axios": "^1.6.0",
     "node-fetch": "^2.7.0",
-    "ws": "^8.14.0"
-  }
+    "ws": "^8.14.0",
+    "playwright": "^1.40.0",
+    "puppeteer": "^21.0.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "python": ">=3.8"
+  },
+  "keywords": ["surebet", "apostas", "cookies", "automation"],
+  "author": "edvaldobravim9-coder",
+  "license": "MIT"
 }
