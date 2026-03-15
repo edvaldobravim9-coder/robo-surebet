@@ -1,17 +1,15 @@
 // ============================================
-// SUPERBET - CAPTURA DE ODDS (2306 IDs!)
+// SUPERBET - CAPTURA DE ODDS (JÁ FUNCIONA)
 // ============================================
 
 const headers = {
     'accept': 'application/json',
     'origin': 'https://superbet.bet.br',
-    'referer': 'https://superbet.bet.br/'
+    'referer': 'https://superbet.bet.br/',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
 };
 
-const ids = [
-    11408276, 11408327, 11408331, 11408332, 11408334,
-    11408340, 11408341, 11408354, 11408356, 11499830
-]; // 10 exemplos
+const ids = [11408276, 11408327, 11408331, 11408332, 11408334];
 
 async function buscarOdds() {
     try {
@@ -25,7 +23,7 @@ async function buscarOdds() {
         
         return odds;
     } catch (err) {
-        console.error('Erro Superbet:', err);
+        console.error('Erro Superbet:', err.message);
         return [];
     }
 }
